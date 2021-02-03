@@ -5,18 +5,23 @@ import random
 
 data = pandas.read_csv("data/french_words.csv")
 to_learn  = data.to_dict(orient="records")
-
+current_card = {}
 def next_card():
+    global current_card
     current_card = random.choice(to_learn)
     canvas.itemconfig(card_title, text="French")
     canvas.itemconfig(card_word, text=current_card["French"])
 
 # --------------------------------UI SETUP----------------------------#
+def flip_card():
+    canvas.itemconfig(card_title, text="English")
+    canvas.itemconfig(card_word, text=current_card["English"])
 
 window = Tk()
 window.title("Flashy")
 window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
+window.after(3000, func=flip_card)
 canvas = Canvas(width=800, height=526)
 
 card_front_img = PhotoImage(file="images/card_front.png")
