@@ -12,6 +12,8 @@ def next_card():
     canvas.itemconfig(card_title, text="French",fill="black")
     canvas.itemconfig(card_word, text=current_card["French"], fill="black")
     canvas.itemconfig(card_background, image=card_front_img)
+    window.after(3000, func=flip_card)
+
 
 # --------------------------------UI SETUP----------------------------#
 def flip_card():
