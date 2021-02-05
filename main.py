@@ -3,7 +3,7 @@ from tkinter import *
 import pandas
 import random
 
-data = pandas.read_csv("data/french_words.csv")
+data = pandas.read_csv("data/words_to_learn.csv")
 to_learn = data.to_dict(orient="records")
 current_card = {}
 
@@ -49,7 +49,7 @@ unknown_button = Button(image=cross_image, highlightthickness=0, command=next_ca
 unknown_button.grid(row=1, column=0)
 
 check_image = PhotoImage(file="images/right.png")
-known_button = Button(image=check_image, highlightthickness=0, command=next_card)
+known_button = Button(image=check_image, highlightthickness=0, command=is_known)
 known_button.grid(row=1, column=1)
 
 next_card()
