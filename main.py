@@ -1,11 +1,19 @@
-BACKGROUND_COLOR = "#B1DDC6"
 from tkinter import *
 import pandas
 import random
-
-data = pandas.read_csv("data/words_to_learn.csv")
-to_learn = data.to_dict(orient="records")
+BACKGROUND_COLOR = "#B1DDC6"
 current_card = {}
+to_learn = {}
+
+try:
+    data = pandas.read_csv("data/words_to_learn.csv")
+
+except:
+    original_data = pandas.read_csv("data/french_words.csv")
+    to_learn = original_data.to_dict(orient="records")
+else:
+    to_learn = data.to_dict(orient="records")
+
 
 
 def next_card():
